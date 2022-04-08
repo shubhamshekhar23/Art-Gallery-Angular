@@ -1,1 +1,8 @@
-<p>department-details works!</p>
+<main class="department-details-container">
+  <h5>{{ department.displayName }}</h5>
+  <div class="art-list-container">
+    <app-art-object-card
+      *ngFor="let item of artObjectList"
+    ></app-art-object-card>
+  </div>
+</main>
