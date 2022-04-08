@@ -1,10 +1,12 @@
 <main class="department-details-container">
   <h5>{{ department.displayName }}</h5>
   <div class="art-list-container">
-    <fa-icon [icon]="faAngleLeft"></fa-icon>
-    <app-art-object-card
-      *ngFor="let item of artObjectList"
-    ></app-art-object-card>
-    <fa-icon [icon]="faAngleRight"></fa-icon>
+    <fa-icon [icon]="faAngleLeft" (click)="leftClick()"></fa-icon>
+    <div class="art-objects" #scrollableDiv>
+      <app-art-object-card
+        *ngFor="let item of artObjectList"
+      ></app-art-object-card>
+    </div>
+    <fa-icon [icon]="faAngleRight" (click)="rightClick()"></fa-icon>
   </div>
 </main>
