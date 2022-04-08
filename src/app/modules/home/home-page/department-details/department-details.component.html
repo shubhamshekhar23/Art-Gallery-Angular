@@ -1,8 +1,10 @@
 <main class="department-details-container">
   <h5>{{ department.displayName }}</h5>
   <div class="art-list-container">
+    <fa-icon [icon]="faAngleLeft"></fa-icon>
     <app-art-object-card
       *ngFor="let item of artObjectList"
     ></app-art-object-card>
+    <fa-icon [icon]="faAngleRight"></fa-icon>
   </div>
 </main>

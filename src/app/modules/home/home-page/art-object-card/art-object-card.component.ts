@@ -20,5 +20,9 @@ export class ArtObjectCardComponent implements OnInit {
     );
   }
 
+  get randomInt() {
+    return Math.random();
+  }
+
   ngOnInit(): void {}
 }

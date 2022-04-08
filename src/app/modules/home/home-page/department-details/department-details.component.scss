@@ -4,6 +4,12 @@
   .art-list-container {
     display: flex;
     gap: 30px;
-    margin: 0px 40px;
+    // margin: 0px 40px;
+  }
+  fa-icon {
+    font-size: 50px;
+    height: 200px;
+    display: flex;
+    align-items: center;
   }
 }
