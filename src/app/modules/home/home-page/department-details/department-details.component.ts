@@ -1,6 +1,8 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { mockDepartments } from '../../../../shared/mockdata/departments.mockdata';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { DepartmentDetails } from 'src/app/models/department.model';
+import { DepartmentArtStateService } from 'src/app/services/department-art-state.service';
 
 @Component({
   selector: 'app-department-details',
@@ -9,15 +11,12 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class DepartmentDetailsComponent implements OnInit {
   @ViewChild('scrollableDiv') scrollableDiv: ElementRef | undefined;
+  @Input() department: DepartmentDetails | any;
 
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
 
-  constructor() {}
-
-  get department() {
-    return mockDepartments[0];
-  }
+  constructor(public depArtStateService: DepartmentArtStateService) {}
 
   get artObjectList() {
     return [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
@@ -43,5 +42,6 @@ export class DepartmentDetailsComponent implements OnInit {
       top: 0,
       behavior: 'smooth',
     });
+    this.depArtStateService.fetchExtraArtObjects(this.department);
   }
 }

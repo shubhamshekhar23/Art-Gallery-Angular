@@ -1,5 +1,6 @@
 <main class="home-page-container">
   <app-department-details
-    *ngFor="let item of departmentList"
+    *ngFor="let item of depArtStateService.departmentList"
+    [department]="item"
   ></app-department-details>
 </main>

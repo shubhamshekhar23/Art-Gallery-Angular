@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ArtObject } from 'src/app/models/artObject.model';
 import { mockObjectInDeparment } from '../../../../shared/mockdata/departments.mockdata';
 
 @Component({
@@ -7,15 +8,13 @@ import { mockObjectInDeparment } from '../../../../shared/mockdata/departments.m
   styleUrls: ['./art-object-card.component.scss'],
 })
 export class ArtObjectCardComponent implements OnInit {
-  constructor() {}
+  @Input() artObject: ArtObject | undefined;
 
-  get artObject() {
-    return mockObjectInDeparment;
-  }
+  constructor() {}
 
   get imgSrc() {
     return (
-      this.artObject.primaryImageSmall ||
+      this.artObject?.primaryImageSmall ||
       'https://images.metmuseum.org/CRDImages/as/web-large/DP251139.jpg'
     );
   }

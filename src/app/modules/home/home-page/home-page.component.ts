@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DepartmentArtStateService } from 'src/app/services/department-art-state.service';
 
 @Component({
   selector: 'app-home-page',
@@ -10,7 +11,9 @@ export class HomePageComponent implements OnInit {
     return [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   }
 
-  constructor() {}
+  constructor(public depArtStateService: DepartmentArtStateService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.depArtStateService.prepareDepartmentList();
+  }
 }
