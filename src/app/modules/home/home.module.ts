@@ -6,6 +6,7 @@ import { SharedModule } from '../../../app/shared/shared.module';
 import { DepartmentDetailsComponent } from './home-page/department-details/department-details.component';
 import { ArtObjectCardComponent } from './home-page/art-object-card/art-object-card.component';
 import { ArtObjectDetailsDialogComponent } from './home-page/art-object-details-dialog/art-object-details-dialog.component';
+import { HeaderComponent } from './home-page/header/header.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [HomePageComponent, DepartmentDetailsComponent, ArtObjectCardComponent, ArtObjectDetailsDialogComponent],
+  declarations: [HomePageComponent, DepartmentDetailsComponent, ArtObjectCardComponent, ArtObjectDetailsDialogComponent, HeaderComponent],
   imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
 })
 export class HomeModule {}

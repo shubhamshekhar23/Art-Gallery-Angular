@@ -11,6 +11,8 @@ import { DepartmentService } from './department.service';
 export class DepartmentArtStateService {
   departmentList: DepartmentDetails[] = [];
   currentDepLoadIndex = 0;
+  currentDepLoadSearchQueryIndex = 0;
+  searchQuery = '';
 
   constructor(
     private artObjectService: ArtObjectService,
@@ -43,6 +45,8 @@ export class DepartmentArtStateService {
       this.populateObjectIdsInDepartments(
         this.departmentList && this.departmentList[this.currentDepLoadIndex]
       );
+    } else {
+      this.currentDepLoadIndex = 0;
     }
   }
 
@@ -80,5 +84,55 @@ export class DepartmentArtStateService {
     this.updateObjectDetailsListInDepartment(department).subscribe((result) => {
       department.objectList = [...department.objectList, ...result];
     });
+  }
+
+  /* searchquery */
+
+  searchAndFilterArt(searchQuery: any) {
+    this.currentDepLoadSearchQueryIndex = 0;
+    this.searchQuery = searchQuery;
+    this.populateDataSequentiallyForSearchQuery();
+  }
+
+  populateDataSequentiallyForSearchQuery() {
+    if (this.currentDepLoadSearchQueryIndex < this.departmentList.length) {
+      this.populateObjectIdsInDepartmentUsingSearchQuery(
+        this.departmentList &&
+          this.departmentList[this.currentDepLoadSearchQueryIndex]
+      );
+    } else {
+      this.currentDepLoadSearchQueryIndex = 0;
+    }
+  }
+
+  populateObjectIdsInDepartmentUsingSearchQuery(department: DepartmentDetails) {
+    this._resetDepartmentData(department);
+    this.artObjectService
+      .searchObject(this.searchQuery, department.departmentId)
+      .subscribe((res) => {
+        if (res.objectIDs && res.objectIDs[0]) {
+          department.objectIds = res.objectIDs;
+          this.populateObjectDetailsListUsingSearchQuery(department);
+        } else {
+          department.objectList = [];
+          this.currentDepLoadSearchQueryIndex++;
+          this.populateDataSequentiallyForSearchQuery();
+        }
+      });
+  }
+
+  populateObjectDetailsListUsingSearchQuery(department: DepartmentDetails) {
+    this.updateObjectDetailsListInDepartment(department).subscribe((result) => {
+      department.objectList = [...department.objectList, ...result];
+      this.currentDepLoadSearchQueryIndex++;
+      this.populateDataSequentiallyForSearchQuery();
+    });
+  }
+
+  _resetDepartmentData(department: DepartmentDetails) {
+    department.lowLimit = 0;
+    department.upperLimit = 12;
+    department.objectList = [];
+    department.objectIds = [];
   }
 }

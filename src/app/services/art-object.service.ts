@@ -18,9 +18,12 @@ export class ArtObjectService {
     );
   }
 
-  searchObject(queryString: any): Observable<ObjectInDepartment> {
+  searchObject(
+    queryString: any,
+    departmentId: any
+  ): Observable<ObjectInDepartment> {
     return this._httpClient.get<ObjectInDepartment>(
-      this.BASE_URL + `/search?q=${queryString}`
+      this.BASE_URL + `/search?departmentId=${departmentId}&q=${queryString}`
     );
   }
 }
