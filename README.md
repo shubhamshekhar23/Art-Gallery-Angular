@@ -14,14 +14,12 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Project Features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- When the app loads, It makes backend request and loads the art listing of department sequentially. So, first the art content of departemnt 1 loads and then department2 and so on.
+- For performance improvement, the app loads only the first 13 artlisting of each department and as user clicks on the right button, it will load the next 13 and so on.
+- debouncing feature is implemented on search input, when user searches for a text, then it follows the same process as described above. It loads the content one by one
+- In the main page, low resolution image is selected, But some data doesn't have images. So, a default one is chosen.
+- After clicking on the image title, app opens a modal showing a high resolution image and details of the art form
+- App is completely responsive and be easily used until 320px device width
+- fontawesome and bootstrap has been used in the app
