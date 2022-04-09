@@ -26,6 +26,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Application details section
 
-Name: Shubham Shekhar
-Email: shubham.shekhar2306@gmail.com
-Position: Senior Front End Developer
+- Name: Shubham Shekhar
+- Email: shubham.shekhar2306@gmail.com
+- Position: Senior Front End Developer
