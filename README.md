@@ -23,9 +23,3 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - After clicking on the image title, app opens a modal showing a high resolution image and details of the art form
 - App is completely responsive and be easily used until 320px device width
 - fontawesome and bootstrap has been used in the app
-
-## Application details section
-
-- Name: Shubham Shekhar
-- Email: shubham.ae.iitkgp@gmail.com
-- Position: Senior Front End Developer
