@@ -3,6 +3,9 @@ import { mockDepartments } from '../../../../shared/mockdata/departments.mockdat
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { DepartmentDetails } from 'src/app/models/department.model';
 import { DepartmentArtStateService } from 'src/app/services/department-art-state.service';
+import { ArtObjectDetailsDialogComponent } from '../art-object-details-dialog/art-object-details-dialog.component';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ArtObject } from 'src/app/models/artObject.model';
 
 @Component({
   selector: 'app-department-details',
@@ -16,7 +19,10 @@ export class DepartmentDetailsComponent implements OnInit {
   faAngleLeft = faAngleLeft;
   faAngleRight = faAngleRight;
 
-  constructor(public depArtStateService: DepartmentArtStateService) {}
+  constructor(
+    public depArtStateService: DepartmentArtStateService,
+    private modalService: NgbModal
+  ) {}
 
   get artObjectList() {
     return [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
@@ -43,5 +49,13 @@ export class DepartmentDetailsComponent implements OnInit {
       behavior: 'smooth',
     });
     this.depArtStateService.fetchExtraArtObjects(this.department);
+  }
+
+  openArtDetailsDialog(item: ArtObject) {
+    const modalRef = this.modalService.open(ArtObjectDetailsDialogComponent, {
+      centered: true,
+      size: 'lg',
+    });
+    modalRef.componentInstance.artObject = item;
   }
 }

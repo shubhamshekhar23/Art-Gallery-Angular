@@ -1,10 +1,39 @@
 .header-container {
   text-align: center;
-  margin-top: 30px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 30px;
+  .logo {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: #2c3e50;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #ffdab9, #ffa07a);
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .logo::before {
+    content: "\1F3A8"; /* Unicode art palette symbol */
+    font-size: 30px;
+    margin-right: 10px;
+    color: #e74c3c;
+  }
   input {
-    width: 400px;
-    height: 50px;
-    border-radius: 10px;
-    padding: 0px 20px;
+    min-width: 400px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 250px;
+    outline: none;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+  }
+
+  input:focus {
+    border: 1px solid #3498db;
   }
 }

@@ -6,6 +6,7 @@
       <app-art-object-card
         *ngFor="let item of department?.objectList"
         [artObject]="item"
+        (click)="openArtDetailsDialog(item)"
       ></app-art-object-card>
     </div>
     <fa-icon [icon]="faAngleRight" (click)="rightClick()"></fa-icon>
