@@ -1,4 +1,6 @@
-# Art Gallery (Angular - 13.1.2)
+# Art Gallery (Angular)
+
+![Project preview](docs/preview.png)
 
 ## Project Features
 
