@@ -1,18 +1,4 @@
-# ClimedoFe
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Art Gallery (Angular - 13.1.2)
 
 ## Project Features
 
@@ -23,3 +9,9 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 - After clicking on the image title, app opens a modal showing a high resolution image and details of the art form
 - App is completely responsive and be easily used until 320px device width
 - fontawesome and bootstrap has been used in the app
+- The backend api used is `https://collectionapi.metmuseum.org/public/collection/v1` from `https://metmuseum.github.io/`
+
+## Run this app
+
+- Run `npm i` and then `npm run start`
+- Navigate to `http://localhost:4200/`
