@@ -21,6 +21,7 @@ export class DepartmentArtStateService {
   ) {}
 
   prepareDepartmentList() {
+    this.departmentList = [];
     this.departmentService
       .getDepartments()
       .pipe(map((item) => item.departments))

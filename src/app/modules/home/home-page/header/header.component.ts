@@ -18,7 +18,11 @@ export class HeaderComponent implements OnInit {
       clearTimeout(this.timeCheck);
     }
     this.timeCheck = setTimeout(() => {
-      this.departmentArtStateService.searchAndFilterArt(this.searchText);
-    }, 500);
+      if (this.searchText) {
+        this.departmentArtStateService.searchAndFilterArt(this.searchText);
+      } else {
+        this.departmentArtStateService.prepareDepartmentList();
+      }
+    }, 1000);
   }
 }
