@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { forkJoin, map, Observable } from 'rxjs';
+import { forkJoin, map, Observable, Subscription } from 'rxjs';
 import { DepartmentDetails, Departments } from '../models/department.model';
 import { ArtObjectService } from './art-object.service';
 import { DepartmentService } from './department.service';
@@ -13,6 +13,7 @@ export class DepartmentArtStateService {
   currentDepLoadIndex = 0;
   currentDepLoadSearchQueryIndex = 0;
   searchQuery = '';
+  recursionSubscription: Subscription = new Subscription();
 
   constructor(
     private artObjectService: ArtObjectService,
@@ -21,6 +22,7 @@ export class DepartmentArtStateService {
   ) {}
 
   prepareDepartmentList() {
+    this.recursionSubscription && this.recursionSubscription.unsubscribe();
     this.departmentList = [];
     this.departmentService
       .getDepartments()
@@ -52,7 +54,7 @@ export class DepartmentArtStateService {
   }
 
   populateObjectIdsInDepartments(department: any) {
-    this.departmentService
+    this.recursionSubscription = this.departmentService
       .getObjectsInDepartments(department.departmentId)
       .subscribe((res) => {
         department.objectIds = res.objectIDs;
@@ -90,6 +92,7 @@ export class DepartmentArtStateService {
   /* searchquery */
 
   searchAndFilterArt(searchQuery: any) {
+    this.recursionSubscription && this.recursionSubscription.unsubscribe();
     this.currentDepLoadSearchQueryIndex = 0;
     this.searchQuery = searchQuery;
     this.populateDataSequentiallyForSearchQuery();
@@ -108,7 +111,7 @@ export class DepartmentArtStateService {
 
   populateObjectIdsInDepartmentUsingSearchQuery(department: DepartmentDetails) {
     this._resetDepartmentData(department);
-    this.artObjectService
+    this.recursionSubscription = this.artObjectService
       .searchObject(this.searchQuery, department.departmentId)
       .subscribe((res) => {
         if (res.objectIDs && res.objectIDs[0]) {

@@ -1,6 +1,10 @@
 <main class="art-object-container">
   <div>
-    <img [src]="imgSrc" alt="art-image" />
+    <!-- <img [src]="imgSrc" alt="art-image" loading="lazy" /> -->
+    <app-image-loader
+      [imageUrl]="imgSrc"
+      [id]="artObject?.objectID"
+    ></app-image-loader>
   </div>
   <p>{{ artObject?.title }}</p>
 </main>

@@ -23,6 +23,6 @@ export class HeaderComponent implements OnInit {
       } else {
         this.departmentArtStateService.prepareDepartmentList();
       }
-    }, 1000);
+    }, 500);
   }
 }

@@ -1,7 +1,9 @@
 <main class="home-page-container">
   <app-header></app-header>
-  <app-department-details
-    *ngFor="let item of depArtStateService.departmentList"
-    [department]="item"
-  ></app-department-details>
+  <section *ngFor="let item of depArtStateService.departmentList">
+    <app-department-details
+      *ngIf="item.objectList.length !== 0"
+      [department]="item"
+    ></app-department-details>
+  </section>
 </main>
