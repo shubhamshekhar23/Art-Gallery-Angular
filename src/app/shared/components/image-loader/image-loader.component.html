@@ -1,4 +1,4 @@
-<section class="loader-box" *ngIf="loading">
-  <div class="loader" [id]="loaderId"></div>
+<section class="img-loader-box">
+  <div class="loader" [id]="loaderId" *ngIf="loading"></div>
+  <img [src]="imageUrl" [id]="imageId" (load)="onImageLoad()" loading="lazy" />
 </section>
-<img [id]="imageId" alt="HD Image" [hidden]="loading" />

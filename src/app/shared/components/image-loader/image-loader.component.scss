@@ -1,8 +1,9 @@
-.loader-box {
+.img-loader-box {
   width: 200px;
   height: 200px;
   display: grid;
   place-content: center;
+  position: relative;
   .loader {
     border: 8px solid #f3f3f3;
     border-top: 8px solid #3498db;
@@ -11,6 +12,9 @@
     height: 50px;
     animation: spin 1s linear infinite;
     margin: 20px;
+    position: absolute;
+    top: 35%;
+    left: 30%;
   }
 }
 

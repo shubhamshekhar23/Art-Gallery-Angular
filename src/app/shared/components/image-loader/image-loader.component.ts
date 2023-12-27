@@ -18,7 +18,7 @@ export class ImageLoaderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.loadImage();
+    // this.loadImage();
   }
 
   get imageId() {
@@ -27,6 +27,14 @@ export class ImageLoaderComponent implements OnInit, AfterViewInit {
 
   get loaderId() {
     return this.id + '_' + 'loader';
+  }
+
+  onImageLoad(): void {
+    this.loading = false;
+    // const loaderElement = document.getElementById(this.loaderId);
+    // if (loaderElement) {
+    //   loaderElement.style.display = 'none';
+    // }
   }
 
   loadImage(): void {
